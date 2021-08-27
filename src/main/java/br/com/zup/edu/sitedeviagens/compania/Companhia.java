@@ -28,6 +28,22 @@ public class Companhia {
         this.pais = pais;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public Pais getPais() {
+        return pais;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
     @Override
     public String toString() {
         return "Companhia{" +

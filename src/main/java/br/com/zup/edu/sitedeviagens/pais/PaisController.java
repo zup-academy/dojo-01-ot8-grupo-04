@@ -1,6 +1,7 @@
 package br.com.zup.edu.sitedeviagens.pais;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -18,9 +19,9 @@ public class PaisController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<?> salvar(@RequestBody @Valid PaisForm paisForm, UriComponentsBuilder uriBuilder) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public PaisDto salvar(@RequestBody @Valid PaisForm paisForm) {
         Pais paisSalvo = paisRepository.save(paisForm.toModel());
-        URI uri = uriBuilder.path("/paises/{id}").buildAndExpand(paisSalvo.getId()).toUri();
-        return ResponseEntity.created(uri).body(paisSalvo.toString());
+        return PaisDto.modelToDto(paisSalvo);
     }
 }

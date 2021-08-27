@@ -25,6 +25,10 @@ public class Pais {
         return id;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
     @Override
     public String toString() {
         return "Pais{" +
