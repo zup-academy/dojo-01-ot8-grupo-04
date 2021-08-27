@@ -1,6 +1,5 @@
-package br.com.zup.edu.sitedeviagens.repository;
+package br.com.zup.edu.sitedeviagens.pais;
 
-import br.com.zup.edu.sitedeviagens.model.Pais;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
