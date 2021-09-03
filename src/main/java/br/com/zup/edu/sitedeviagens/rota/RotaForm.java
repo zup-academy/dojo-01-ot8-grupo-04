@@ -3,6 +3,7 @@ package br.com.zup.edu.sitedeviagens.rota;
 import br.com.zup.edu.sitedeviagens.aeroporto.Aeroporto;
 import br.com.zup.edu.sitedeviagens.aeroporto.AeroportoRepository;
 import br.com.zup.edu.sitedeviagens.commons.IdUnico;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
@@ -44,8 +45,11 @@ public class RotaForm {
     }
 
     public Rota toModel(AeroportoRepository repository) {
-        Optional<Aeroporto> aeroportoOrigem = repository.findById(idAeroportoOrigem);
-        Optional<Aeroporto> aeroportoDestino = repository.findById(idAeroportoDestino);
+        Aeroporto aeroportoOrigem = repository.findById(idAeroportoOrigem).orElseThrow(
+                () -> new IllegalArgumentException("Esse aeroporto de origem não existe."));
+        Aeroporto aeroportoDestino = repository.findById(idAeroportoDestino).orElseThrow(
+                () -> new IllegalArgumentException("Esse aeroporto de destino não existe."));
+
         return new Rota(nome, aeroportoOrigem, aeroportoDestino, duracao);
     }
 }

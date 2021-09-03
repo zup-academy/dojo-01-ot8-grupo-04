@@ -11,6 +11,9 @@ public class PaisForm {
         this.nome = nome;
     }
 
+    public PaisForm() {
+    }
+
     public String getNome() {
         return nome;
     }
