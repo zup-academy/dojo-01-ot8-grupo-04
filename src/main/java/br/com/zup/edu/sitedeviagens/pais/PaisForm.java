@@ -7,6 +7,10 @@ public class PaisForm {
     @NotEmpty
     private String nome;
 
+    public PaisForm(String nome) {
+        this.nome = nome;
+    }
+
     public String getNome() {
         return nome;
     }
