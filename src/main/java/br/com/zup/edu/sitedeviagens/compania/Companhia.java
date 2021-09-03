@@ -28,9 +28,6 @@ public class Companhia {
         this.pais = pais;
     }
 
-    public Companhia() {
-    }
-
     public Long getId() {
         return id;
     }

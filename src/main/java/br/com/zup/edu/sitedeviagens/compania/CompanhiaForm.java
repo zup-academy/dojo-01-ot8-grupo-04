@@ -1,12 +1,10 @@
 package br.com.zup.edu.sitedeviagens.compania;
 
-import br.com.zup.edu.sitedeviagens.commons.UniqueValue;
 import br.com.zup.edu.sitedeviagens.pais.Pais;
-import br.com.zup.edu.sitedeviagens.pais.PaisRepository;
 
-import javax.persistence.EntityManager;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
-import java.util.Optional;
+import java.time.LocalDateTime;
 
 public class CompanhiaForm {
 
@@ -15,12 +13,11 @@ public class CompanhiaForm {
     private String nome;
 
     @NotBlank
-    @UniqueValue(domainClass = Pais.class, fieldName = "id")
-    private Long idPais;
+    private Pais pais;
 
-    public Companhia toModel(EntityManager em) {
-        Pais pais = em.find(Pais.class, this.idPais);
-        return new Companhia(this.nome, pais);
+
+    public Companhia toModel() {
+        return new Companhia(this.nome, this.pais);
     }
 
 }
