@@ -3,11 +3,9 @@ package br.com.zup.edu.sitedeviagens.rota;
 import br.com.zup.edu.sitedeviagens.aeroporto.Aeroporto;
 import br.com.zup.edu.sitedeviagens.aeroporto.AeroportoRepository;
 import br.com.zup.edu.sitedeviagens.commons.IdUnico;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
-import java.util.Optional;
 
 public class RotaForm {
 

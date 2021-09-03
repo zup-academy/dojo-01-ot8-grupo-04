@@ -23,4 +23,16 @@ public class CompanhiaForm {
         return new Companhia(this.nome, pais);
     }
 
+    public CompanhiaForm(String nome, Long idPais) {
+        this.nome = nome;
+        this.idPais = idPais;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public Long getIdPais() {
+        return idPais;
+    }
 }
