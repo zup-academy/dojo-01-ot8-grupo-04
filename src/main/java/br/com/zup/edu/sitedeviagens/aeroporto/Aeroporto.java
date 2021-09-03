@@ -19,13 +19,9 @@ public class Aeroporto {
     public Aeroporto() {
     }
 
-    public Aeroporto(Long id, String nome, Pais pais) {
-        this.id = id;
+    public Aeroporto(String nome, Pais pais) {
         this.nome = nome;
         this.pais = pais;
-    }
-
-    public Aeroporto(String nome, Pais pais) {
     }
 
     public Long getId() {

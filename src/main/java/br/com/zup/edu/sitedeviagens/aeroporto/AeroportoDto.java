@@ -22,4 +22,16 @@ public class AeroportoDto {
     public static AeroportoDto modelToDto(Aeroporto aeroporto) {
         return new AeroportoDto(aeroporto.getId(), aeroporto.getNome(), aeroporto.getPais());
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public Pais getPais() {
+        return pais;
+    }
 }
