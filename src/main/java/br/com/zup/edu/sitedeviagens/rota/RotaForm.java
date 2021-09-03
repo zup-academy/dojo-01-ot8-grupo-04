@@ -2,19 +2,22 @@ package br.com.zup.edu.sitedeviagens.rota;
 
 import br.com.zup.edu.sitedeviagens.aeroporto.Aeroporto;
 import br.com.zup.edu.sitedeviagens.aeroporto.AeroportoRepository;
+import br.com.zup.edu.sitedeviagens.commons.IdUnico;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
+import java.util.Optional;
 
 public class RotaForm {
 
     private String nome;
 
     @NotNull
-    private Long idOrigem;
+    @IdUnico(domainClass = Aeroporto.class, fieldName = "id")
+    private Long idAeroportoOrigem;
 
     @NotNull
-    private Long idDestino;
+    private Long idAeroportoDestino;
 
     @NotNull
     @Positive
@@ -28,12 +31,12 @@ public class RotaForm {
         return nome;
     }
 
-    public Long getIdOrigem() {
-        return idOrigem;
+    public Long getIdAeroportoOrigem() {
+        return idAeroportoOrigem;
     }
 
-    public Long getIdDestino() {
-        return idDestino;
+    public Long getIdAeroportoDestino() {
+        return idAeroportoDestino;
     }
 
     public Integer getDuracao() {
@@ -41,7 +44,8 @@ public class RotaForm {
     }
 
     public Rota toModel(AeroportoRepository repository) {
-//        Aeroporto aeroportoOrigem =
-//        return new Rota(nome, aeroportoOrigem, aeroportoDestino, duracao);
+        Optional<Aeroporto> aeroportoOrigem = repository.findById(idAeroportoOrigem);
+        Optional<Aeroporto> aeroportoDestino = repository.findById(idAeroportoDestino);
+        return new Rota(nome, aeroportoOrigem, aeroportoDestino, duracao);
     }
 }
